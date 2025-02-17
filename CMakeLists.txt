@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.10)
 
 # set the project name and version
-project(ControlStation VERSION 1.0.0)
+project(SkyWeaver VERSION 1.0.0)
 
 #set the default path for built executables to the "bin" directory
 set(EXECUTABLE_OUTPUT_PATH ${PROJECT_SOURCE_DIR}/build)

@@ -1,0 +1,22 @@
+services:
+  skyweaver-dev:
+    build:
+      context: .
+      dockerfile: skyweaver-dev.dockerfile
+      ssh:
+        - default
+    image: skyweaver-dev:latest
+    container_name: skyweaver-dev
+    hostname: skyweaver
+    environment:
+      - OPENBLAS_NUM_THREADS=1
+    volumes:
+      - "vscode-config:/home/skyweaver/.vscode"
+      - ".:/home/skyweaver/skyweaver:rw"
+
+    working_dir: "/home/skyweaver"
+    command: [ "tail", "-f", "/dev/null" ]
+
+volumes:
+  vscode-config:
+    driver: local

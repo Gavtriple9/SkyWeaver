@@ -1,7 +1,0 @@
-[
-{
-  "directory": "/Users/gavinroberts/Documents/GitHub/ControlStation/build",
-  "command": "/usr/bin/clang++  -I/Users/gavinroberts/Documents/GitHub/ControlStation/include -iframework /Library/Frameworks  -Wall -Werror -std=c++14  -g -isysroot /Library/Developer/CommandLineTools/SDKs/MacOSX11.3.sdk -o CMakeFiles/ControlStation.dir/src/main.cpp.o -c /Users/gavinroberts/Documents/GitHub/ControlStation/src/main.cpp",
-  "file": "/Users/gavinroberts/Documents/GitHub/ControlStation/src/main.cpp"
-}
-]

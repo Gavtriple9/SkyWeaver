@@ -5,18 +5,18 @@
 const static int SCREEN_WIDTH = 1980;
 const static int SCREEN_HEIGHT = 1080;
 
-int main(){
+int main()
+{
 
 	sf::RenderWindow window;
-	
-   window.create(
-        sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32), 
-        "Dragonfly Mission Control"
-    );
 
-    sf::CircleShape shape(window.getSize().y/2);
+	window.create(
+		sf::VideoMode(SCREEN_WIDTH, SCREEN_HEIGHT, 32),
+		"SkyWeave");
+
+	sf::CircleShape shape(window.getSize().y / 2);
 	shape.setFillColor(sf::Color::White);
-	
+
 	// shape.move(SCREEN_WIDTH/2, SCREEN_HEIGHT/2);
 
 	sf::Texture shapeTexture;
@@ -38,5 +38,5 @@ int main(){
 		window.display();
 	}
 
-    return 0;
+	return 0;
 }
