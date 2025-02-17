@@ -7,8 +7,6 @@ RUN apt-get -y update && apt-get -y upgrade && apt-get -y autoremove && apt-get 
 RUN apt-get -y install \
     # Dev Tools
     build-essential \
-    sudo \
-    vim \
     clang \
     libc++-dev \
     libc++abi-dev \
@@ -18,9 +16,13 @@ RUN apt-get -y install \
     gdb \
     btop \
     tmux \
-    curl \
     # SkyWeaver Dependencies
-    libsfml-dev
+    libsdl2-dev \
+    libfontconfig1-dev
+
+# Install Rust for development
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
+ENV PATH="/root/.cargo/bin:${PATH}"
 
 # Create a new sudo user 'skyweaver'
 RUN useradd -ms /bin/bash skyweaver
@@ -34,6 +36,15 @@ RUN cd /tmp && \
     tar -C /opt -xzf nvim-linux-x86_64.tar.gz && \
     echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin' >> /home/skyweaver/.bashrc
 
+# Install skyweaver
+ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
+RUN mkdir -p /root/.ssh && ssh-keyscan github.com >> /root/.ssh/known_hosts
+WORKDIR /skyweaver
+RUN --mount=type=bind,source=.,target=/skyweaver,rw \
+    --mount=type=cache,target=/skyweaver/target/ \
+    --mount=type=ssh \
+    LDFLAGS="-static" cargo build --release -p skyweaver
+
 # Switch to root user
 USER skyweaver
 
@@ -45,6 +56,9 @@ WORKDIR ${HOME}
 
 # Ensure 'skyweaver' user has appropriate permissions in its home directory
 RUN chown -R skyweaver:skyweaver ${HOME}
+
+# Now install rustup here
+RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
 
 ENTRYPOINT []
 CMD []
