@@ -1,6 +1,6 @@
 # Skyweaver
 
-![skyweaver](./icon.png)
+![skyweaver](./banner.png)
 A control station for drone automation.
 
 # Installation
