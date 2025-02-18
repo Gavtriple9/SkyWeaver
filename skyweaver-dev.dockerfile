@@ -8,6 +8,7 @@ RUN apt-get -y update && apt-get -y upgrade && apt-get -y autoremove && apt-get 
 # Install Dev Tools
 RUN apt-get -y install \
     build-essential \
+    sudo \
     clang \
     libc++-dev \
     libc++abi-dev \
@@ -43,7 +44,7 @@ RUN cd /tmp && \
     curl -LO https://github.com/neovim/neovim/releases/latest/download/nvim-linux-x86_64.tar.gz && \
     rm -rf /opt/nvim && \
     tar -C /opt -xzf nvim-linux-x86_64.tar.gz && \
-    echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin' >> /home/skyweaver/.bashrc
+    echo 'export PATH="$PATH:/opt/nvim-linux-x86_64/bin"' >> /home/skyweaver/.bashrc
 
 # Install skyweaver
 # ENV CARGO_NET_GIT_FETCH_WITH_CLI=true
