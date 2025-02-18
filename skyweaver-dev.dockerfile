@@ -17,8 +17,7 @@ RUN apt-get -y install \
     btop \
     tmux \
     # SkyWeaver Dependencies
-    libsdl2-dev \
-    libfontconfig1-dev
+    libsdl2-dev 
 
 # Install Rust for development
 RUN curl https://sh.rustup.rs -sSf | sh -s -- -y
